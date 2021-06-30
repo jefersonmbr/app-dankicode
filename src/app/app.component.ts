@@ -6,23 +6,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  students = [];
-  newStudentName = '';
-  newStudentDescription = '';
+  students = [{ type: 'approved', name: 'José', description: 'Masculino' }];
 
-  addApproved() {
-    this.students.push({
-      type: 'approved',
-      name: this.newStudentName,
-      description: this.newStudentDescription
-    })
-  }
+  approvedAdded(studentData: {name: string, description: string}) {
+        this.students.push({
+            type: 'approved',
+            name: studentData.name,
+            description: studentData.description
+        })
+    }
 
-  addSubstitute() {
-    this.students.push({
-      type: 'substitute',
-      name: this.newStudentName,
-      description: this.newStudentDescription
-    })
-  }
+    substituteAdded(studentData: {name: string, description: string}) {
+        this.students.push({
+            type: 'substitute',
+            name: studentData.name,
+            description: studentData.description
+        })
+    }
 }
