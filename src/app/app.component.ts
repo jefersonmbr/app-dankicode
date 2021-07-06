@@ -8,6 +8,14 @@ import { Component } from '@angular/core';
 export class AppComponent {
   students = [{ type: 'approved', name: 'José', description: 'Masculino' }];
 
+  changeFirst() {
+    this.students[0].type = 'substitute';
+  }
+
+  destroyFirst() {
+    this.students.splice(0 ,1);
+  }
+
   approvedAdded(studentData: {name: string, description: string}) {
         this.students.push({
             type: 'approved',

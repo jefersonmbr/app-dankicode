@@ -3,12 +3,9 @@
         [ngClass]="{
             'list-group-item': true,
             'mb-2': true,
-            'list-group-item-success' : student.type === 'approved',
-            'list-group-item-secondary' : student.type === 'substitute'
+            'list-group-item-success' : type === 'approved',
+            'list-group-item-secondary' : type === 'substitute'
         }">
-        <div class="d-flex w-100 justify-content-between">
-            <strong>{{ student.name }}</strong>
-            <small>{{ student.description }}</small>
-        </div>
+        <ng-content></ng-content>
     </li>
 </ul>

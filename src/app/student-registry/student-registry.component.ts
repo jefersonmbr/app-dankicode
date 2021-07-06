@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-student-registry',
@@ -10,25 +10,27 @@ export class StudentRegistryComponent implements OnInit {
     @Output() approvedCreated = new EventEmitter<{name: string, description: string}>();
     @Output() substituteCreated = new EventEmitter<{name: string, description: string}>();
 
-    newStudentName = '';
-    newStudentDescription = '';
+    //newStudentName = '';
+    //newStudentDescription = '';
+
+    @ViewChild('studentDescriptionInput') studentDescriptionInput: ElementRef;
 
     constructor() { }
 
     ngOnInit(): void {
     }
 
-    addApproved() {
+    addApproved(nameInput: HTMLInputElement) {
         this.approvedCreated.emit({
-            name: this.newStudentName,
-            description: this.newStudentDescription
+            name: nameInput.value,
+            description: this.studentDescriptionInput.nativeElement.value
         });
     }
 
-    addSubstitute() {
+    addSubstitute(nameInput: HTMLInputElement) {
         this.substituteCreated.emit({
-            name: this.newStudentName,
-            description: this.newStudentDescription
+            name: nameInput.value,
+            description: this.studentDescriptionInput.nativeElement.value
         });
     }
 }
